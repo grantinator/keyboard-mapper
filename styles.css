@@ -1,0 +1,111 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    display: flex;
+    flex: 1 2 auto;
+    justify-content: space-between;
+}
+
+body > div {
+    width: 40%;
+    height: 100%;
+    border: 5px solid gainsboro;
+}
+
+body.zalgo-mode {
+    background: rgb(33, 33, 33);
+    color: green;
+}
+
+body.zalgo-mode > div {
+    border: 5px solid darkgreen;
+}
+
+#editing-area #user-input-area {
+    font-size: 20px;
+    padding: 0.5em;
+    margin: auto;
+    border: 2px dashed darkmagenta;
+    border-radius: 5px;
+    outline: none;
+}
+
+#mapping-area {
+    overflow: hidden;
+}
+
+#mapping-area #rule-box {
+    text-align: center;
+}
+
+#mapping-area #mapping-header {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+#menu #demo-maps {
+    width: 85%;
+}
+
+#menu #zalgo-slider {
+    width: 85%;
+}
+
+#demo-maps {
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid black;
+    border-radius: .5em;
+}
+
+#mapping-area .button {
+    width: 50%;
+    margin: 0;
+    padding: 0.2em;
+    font-size: 22px;
+    font-weight: 100;
+    text-shadow: 0px 0px 2px white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.button.zalgo-mode {
+    background: rgb(34, 171, 52);
+    color: black;
+}
+
+#mapping-area input {
+    font-size: 20px;
+    width: 3em;
+    margin: 0.5em;
+    text-align: center;
+    border-radius: 2px;
+    border: 2px solid grey;
+}
+
+#mapping-area input.fromChar {
+    border-color: green;
+}
+
+#mapping-area input.toChar {
+    border-color; blue;
+}
+
+#mapping-area #recording-area {
+    text-align: center;
+    font-size: 20px;
+    padding: 0.5em;
+    margin: auto;
+    border: 2px solid darkmagenta;
+    border-radius: 5px;
+    z-index: 15;
+    background: rgba(89, 95, 100, 0.94);
+}
+

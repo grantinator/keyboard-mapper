@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=\
+swap" rel="stylesheet">
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.658.0.min.js"></script>
+    </head>
+    <body>
+        <div id="menu">
+            <h3> Keyboard Mapper </h3>
+            <select id="demo-maps" onchange="loadRules(this.value)"></select>
+            <label for="zalgo-slider"> Zalgo? </label>
+            <input type="range" id="zalgo-slider" min="0" max="10" value="0" onchange="initiateZalgo(this.value)">
+        </div>
+        <div id="mapping-area">
+            <div id="mapping-header"> 
+                <button class="button" id="new-rule-btn" onclick="addRule()">New Rule</button>
+                <button class="button" id="clear-rule-btn" onclick="clearCurrentRules()"> Clear Rules </button>
+                <div id="rule-display"> </div>
+            </div>
+            <div id="rule-area">
+                <!---- Rules will populate here ------>
+            </div>
+        </div>
+        <div id="editing-area">
+            <div id="user-input-area" contenteditable="true"></div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
