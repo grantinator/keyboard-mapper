@@ -4,14 +4,18 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=\
 swap" rel="stylesheet">
-        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.658.0.min.js"></script>
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.658.0.min.js"></script>
+        
     </head>
     <body>
         <div id="menu">
             <h3> Keyboard Mapper </h3>
-            <select id="demo-maps" onchange="loadRules(this.value)"></select>
+            <select id="demo-maps" onchange="loadRules(this.id, this.value)">
+                <option id="placeholder" value="{}"> Try a preloaded map </option> 
+            </select>
             <label for="zalgo-slider"> Zalgo? </label>
             <input type="range" id="zalgo-slider" min="0" max="10" value="0" onchange="initiateZalgo(this.value)">
+            <button class="button" id="random-map-button" onclick="createRandomRuleMap()"> Random Map </button>
         </div>
         <div id="mapping-area">
             <div id="mapping-header"> 

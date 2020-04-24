@@ -47,6 +47,7 @@ body.zalgo-mode > div {
     display: flex;
     flex-direction: column;
     align-content: center;
+    padding: 2px;
 }
 
 #menu #demo-maps {
@@ -64,8 +65,7 @@ body.zalgo-mode > div {
     border-radius: .5em;
 }
 
-#mapping-area .button {
-    width: 50%;
+.button {
     margin: 0;
     padding: 0.2em;
     font-size: 22px;
@@ -74,6 +74,14 @@ body.zalgo-mode > div {
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+#mapping-area .button {
+    width: 50%;
+}
+
+#menu .button {
+    width: 100%;
 }
 
 .button.zalgo-mode {

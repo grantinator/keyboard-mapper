@@ -2,6 +2,7 @@ const ruleArea = document.getElementById("rule-area");
 const editorArea = document.getElementById("user-input-area");
 const newRuleButton = document.getElementById("new-rule-btn");
 const clearRuleButton = document.getElementById("clear-rule-btn");
+const randomMapButton = document.getElementById("random-map-button");
 const selectBox = document.getElementById("demo-maps");
 const zalgoSlider = document.getElementById("zalgo-slider");
 const regex = /^[a-z0-9]{1}$/i;
@@ -109,7 +110,10 @@ function clearCurrentRules() {
     sessionKeyMap = {};
 }
 
-function loadRules(rulesList) {
+function loadRules(optionId, rulesList) {
+    if (optionId === "placeholder") {
+        return;
+    }
     clearCurrentRules();
     if (rulesList.constructor !== ([]).constructor) {
         rulesList = JSON.parse(rulesList);
@@ -154,10 +158,60 @@ function initiateZalgo(value) {
             document.body.classList.remove("zalgo-mode");
             newRuleButton.classList.remove("zalgo-mode");
             clearRuleButton.classList.remove("zalgo-mode");
+            randomMapButton.classList.remove("zalgo-mode");
         }
     } else if (value > 0 ) {
         document.body.classList.add("zalgo-mode");
         newRuleButton.classList.add("zalgo-mode");
         clearRuleButton.classList.add("zalgo-mode");
+        randomMapButton.classList.add("zalgo-mode");
+    }
+}
+
+function shuffleArray(array) {
+    // Fisher-yates shuffle
+    var shuffleBorder = array.length, temp, swapNdx;
+    while (shuffleBorder > 0) {
+        swapNdx = Math.floor(Math.random() * shuffleBorder--);
+        temp = array[shuffleBorder];
+        array[shuffleBorder] = array[swapNdx];
+        array[swapNdx] = temp; 
+    }
+    return array;
+}
+
+function generateAlphabetArray() {
+    var resultArray = []
+    var start = 'a'.charCodeAt(0);
+    var end = 'z'.charCodeAt(0);
+
+    while(start <= end) {
+        resultArray.push(String.fromCharCode(start))
+        start++;
+    }
+    return resultArray;
+}
+
+function generateRandomMap() {
+    var keyArray = generateAlphabetArray();
+    var valueArray = shuffleArray(generateAlphabetArray());
+
+    if (keyArray.length == valueArray.length) {
+        sessionKeyMap = {}
+
+        keyArray.forEach(function(keyChar, ndx) {
+            updateMap(keyChar, valueArray[ndx]);
+        });
+    }
+}
+
+function createRandomRuleMap() {
+    clearCurrentRules();
+    generateRandomMap();
+
+    for (key in sessionKeyMap) {
+        if (sessionKeyMap.hasOwnProperty(key)) {
+            addPremadeRule(key, sessionKeyMap[key]);
+        }
     }
 }
